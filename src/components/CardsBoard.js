@@ -1,10 +1,15 @@
 import React from 'react';
 import Card from './Card';
 
-const characters = [{ name: 'Emma Nelson', img: '#' }];
-
-function Board() {
-    return <Card character={characters[0]} />;
+function Board(props) {
+    const { characters } = props;
+    return (
+        <div>
+            {characters.map((character) => (
+                <Card key={character.name} character={character} />
+            ))}
+        </div>
+    );
 }
 
 export default Board;
