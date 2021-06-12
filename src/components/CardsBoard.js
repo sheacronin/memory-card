@@ -1,7 +1,8 @@
 import React from 'react';
 import Card from './Card';
 
-function Board(props) {
+// Rename
+function CardsBoard(props) {
     const { characters } = props;
     return (
         <div>
@@ -12,4 +13,4 @@ function Board(props) {
     );
 }
 
-export default Board;
+export default CardsBoard;
