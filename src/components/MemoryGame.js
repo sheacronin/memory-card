@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ScoreBoard from './ScoreBoard';
 import Status from './Status';
 import CardsBoard from './CardsBoard';
@@ -55,11 +55,26 @@ function MemoryGame() {
 
     const displayedChars = getCharsToDisplay();
 
+    const [clickedChars, setClickedChars] = useState([]);
+
+    function handleCardClick(character) {
+        console.log(clickedChars);
+        console.log(character.name);
+        if (clickedChars.includes(character)) {
+            console.log('YOU LOSE! you already clicked ' + character.name);
+        } else {
+            setClickedChars((prevState) => [...prevState, character]);
+        }
+    }
+
     return (
         <main>
             <ScoreBoard score={0} highScore={0} />
             <Status />
-            <CardsBoard characters={displayedChars} />
+            <CardsBoard
+                characters={displayedChars}
+                handleCardClick={handleCardClick}
+            />
         </main>
     );
 }
