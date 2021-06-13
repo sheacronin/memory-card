@@ -34,12 +34,32 @@ const CHARACTERS = [
 ];
 
 function MemoryGame() {
+    function getCharsToDisplay() {
+        function generateIndex(listLength) {
+            return Math.floor(Math.random() * listLength);
+        }
+
+        const displayedChars = [];
+
+        while (displayedChars.length < 6) {
+            const i = generateIndex(CHARACTERS.length);
+            if (displayedChars.includes(CHARACTERS[i])) {
+                continue;
+            } else {
+                displayedChars.push(CHARACTERS[i]);
+            }
+        }
+
+        return displayedChars;
+    }
+
+    const displayedChars = getCharsToDisplay();
+
     return (
         <main>
             <ScoreBoard score={0} highScore={0} />
             <Status />
-            {/* Later, characters will be displayedCharacters state? */}
-            <CardsBoard characters={CHARACTERS} />
+            <CardsBoard characters={displayedChars} />
         </main>
     );
 }

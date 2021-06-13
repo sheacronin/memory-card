@@ -2,7 +2,6 @@ import React from 'react';
 import Card from './Card';
 import '../styles/CardsBoard.css';
 
-// Rename
 function CardsBoard(props) {
     const { characters } = props;
     return (
