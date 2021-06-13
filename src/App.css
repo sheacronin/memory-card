@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,12 +7,7 @@
 
 body {
     text-align: center;
-}
-
-div {
-    margin: 10px auto;
-    background-color: lightblue;
-    border: 1px solid darkcyan;
-    padding: 20px;
-    width: 80%;
+    color: #050708;
+    background-color: #beccde;
+    font-family: 'Merriweather', serif;
 }

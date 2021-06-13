@@ -7,7 +7,7 @@ function Card(props) {
     return (
         <button className="card">
             <img src={character.img} alt={character.name} />
-            {character.name}
+            <p>{character.name.toLowerCase()}</p>
         </button>
     );
 }
