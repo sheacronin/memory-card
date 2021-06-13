@@ -9,6 +9,7 @@
     font-family: 'Merriweather', serif;
     text-shadow: 0 2px 2px #f7a01c;
     border: inset 2px #f7a01c;
+    transition: 300ms ease-in-out box-shadow, 300ms ease-in-out color;
 }
 
 .card img {
@@ -17,4 +18,7 @@
 
 .card:hover {
     cursor: pointer;
+    box-shadow: 0 0 8px #000000;
+    color: #1a58a5;
+    text-shadow: 0 1px 1px #f7a01c;
 }
