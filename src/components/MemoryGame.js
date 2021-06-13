@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ScoreBoard from './ScoreBoard';
 import Status from './Status';
 import CardsBoard from './CardsBoard';
@@ -34,15 +34,12 @@ const CHARACTERS = [
 ];
 
 function MemoryGame() {
+    const [displayedChars, setDisplayedChars] = useState(getCharsToDisplay());
     function getCharsToDisplay() {
-        function generateIndex(listLength) {
-            return Math.floor(Math.random() * listLength);
-        }
-
         const displayedChars = [];
 
         while (displayedChars.length < 6) {
-            const i = generateIndex(CHARACTERS.length);
+            const i = Math.floor(Math.random() * CHARACTERS.length);
             if (displayedChars.includes(CHARACTERS[i])) {
                 continue;
             } else {
@@ -53,10 +50,7 @@ function MemoryGame() {
         return displayedChars;
     }
 
-    const displayedChars = getCharsToDisplay();
-
     const [clickedChars, setClickedChars] = useState([]);
-
     function handleCardClick(character) {
         console.log(clickedChars);
         console.log(character.name);
@@ -66,6 +60,11 @@ function MemoryGame() {
             setClickedChars((prevState) => [...prevState, character]);
         }
     }
+
+    // Shuffle displayed characters every time a character is clicked.
+    useEffect(() => {
+        setDisplayedChars(getCharsToDisplay());
+    }, [clickedChars]);
 
     return (
         <main>
