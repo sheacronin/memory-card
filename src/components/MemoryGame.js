@@ -34,9 +34,7 @@ const CHARACTERS = [
 ];
 
 function MemoryGame() {
-    const [displayedChars, setDisplayedChars] = useState(
-        CHARACTERS.slice(0, 6)
-    );
+    const [isGameActive, setIsGameActive] = useState(false);
 
     const [clickedChars, setClickedChars] = useState([]);
     function handleCardClick(character) {
@@ -44,16 +42,21 @@ function MemoryGame() {
         console.log('Clicked ' + character.name);
         if (clickedChars.includes(character)) {
             console.log('YOU LOSE! you already clicked ' + character.name);
+            setIsGameActive(false);
         } else {
             setClickedChars((prevState) => [...prevState, character]);
         }
     }
 
+    const [displayedChars, setDisplayedChars] = useState(
+        CHARACTERS.slice(0, 6)
+    );
     // Shuffle displayed characters every time a character is clicked.
     useEffect(() => {
         // Check if win.
         if (clickedChars.length === CHARACTERS.length) {
             console.log('You clicked all characters! YOU WIN!');
+            setIsGameActive(false);
             return;
         }
 
@@ -95,14 +98,26 @@ function MemoryGame() {
         setDisplayedChars(getCharsToDisplay());
     }, [clickedChars]);
 
+    const score = clickedChars.length;
+    let highScore = 0;
+    useEffect(() => {
+        setClickedChars([]);
+    }, [isGameActive]);
+
     return (
         <main>
-            <ScoreBoard score={0} highScore={0} />
+            <ScoreBoard score={score} highScore={highScore} />
             <Status />
-            <CardsBoard
-                characters={displayedChars}
-                handleCardClick={handleCardClick}
-            />
+            {isGameActive ? (
+                <CardsBoard
+                    characters={displayedChars}
+                    handleCardClick={handleCardClick}
+                />
+            ) : (
+                <button onClick={() => setIsGameActive(true)}>
+                    Start New Game
+                </button>
+            )}
         </main>
     );
 }
