@@ -34,26 +34,14 @@ const CHARACTERS = [
 ];
 
 function MemoryGame() {
-    const [displayedChars, setDisplayedChars] = useState(getCharsToDisplay());
-    function getCharsToDisplay() {
-        const displayedChars = [];
-
-        while (displayedChars.length < 6) {
-            const i = Math.floor(Math.random() * CHARACTERS.length);
-            if (displayedChars.includes(CHARACTERS[i])) {
-                continue;
-            } else {
-                displayedChars.push(CHARACTERS[i]);
-            }
-        }
-
-        return displayedChars;
-    }
+    const [displayedChars, setDisplayedChars] = useState(
+        CHARACTERS.slice(0, 6)
+    );
 
     const [clickedChars, setClickedChars] = useState([]);
     function handleCardClick(character) {
         console.log(clickedChars);
-        console.log(character.name);
+        console.log('Clicked ' + character.name);
         if (clickedChars.includes(character)) {
             console.log('YOU LOSE! you already clicked ' + character.name);
         } else {
@@ -63,6 +51,47 @@ function MemoryGame() {
 
     // Shuffle displayed characters every time a character is clicked.
     useEffect(() => {
+        // Check if win.
+        if (clickedChars.length === CHARACTERS.length) {
+            console.log('You clicked all characters! YOU WIN!');
+            return;
+        }
+
+        function getCharsToDisplay() {
+            const charsToDisplay = [];
+            console.log('--- getCharsToDisplay() ---');
+            console.log('Clicked Characters:', clickedChars);
+
+            while (charsToDisplay.length < 6) {
+                const i = Math.floor(Math.random() * CHARACTERS.length);
+                if (charsToDisplay.includes(CHARACTERS[i])) {
+                    continue;
+                } else {
+                    if (charsToDisplay.length === 5) {
+                        console.log('Last character...' + CHARACTERS[i].name);
+                        console.log(
+                            'Every other char clicked? ' +
+                                charsToDisplay.every((char) =>
+                                    clickedChars.includes(char)
+                                )
+                        );
+                        // Ensure that at least one non-clicked char appears.
+                        if (
+                            charsToDisplay.every((char) =>
+                                clickedChars.includes(char)
+                            ) &&
+                            clickedChars.includes(CHARACTERS[i])
+                        ) {
+                            console.log('getting unique char...');
+                            continue;
+                        }
+                    }
+                    charsToDisplay.push(CHARACTERS[i]);
+                }
+            }
+
+            return charsToDisplay;
+        }
         setDisplayedChars(getCharsToDisplay());
     }, [clickedChars]);
 
