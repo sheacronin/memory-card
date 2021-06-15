@@ -46,6 +46,7 @@ function MemoryGame() {
 
     return (
         <main>
+            <h1>Degrassi Memory Card Game</h1>
             <ScoreBoard clickedChars={clickedChars} />
             <Status gameOutcome={gameStatus.outcome} />
             {gameStatus.isActive ? (

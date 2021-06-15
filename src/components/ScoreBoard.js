@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../styles/ScoreBoard.css';
 
 function ScoreBoard(props) {
     const { clickedChars } = props;
@@ -13,7 +14,7 @@ function ScoreBoard(props) {
     }, [score, highScore]);
 
     return (
-        <div>
+        <div id="score-board">
             <div>Score: {score}</div>
             <div>High Score: {highScore}</div>
         </div>

@@ -1,3 +1,10 @@
+main {
+    display: grid;
+    grid-template-rows: 15% 5% 10% 70%;
+    place-items: center;
+    height: 100vh;
+}
+
 #new-game-btn {
     background-color: #1a58a5;
     color: #ffffff;
