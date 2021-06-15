@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 function ScoreBoard(props) {
-    const { score, highScore } = props;
+    const { clickedChars } = props;
+
+    const score = clickedChars.length;
+    const [highScore, setHighScore] = useState(0);
+
+    useEffect(() => {
+        if (score > highScore) {
+            setHighScore(score);
+        }
+    }, [score, highScore]);
 
     return (
         <div>

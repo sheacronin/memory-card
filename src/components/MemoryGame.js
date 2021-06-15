@@ -30,8 +30,6 @@ function MemoryGame() {
         }
     }, [clickedChars]);
 
-    const score = clickedChars.length;
-    let highScore = 0;
     useEffect(() => {
         console.log('Check for clickedChars reset effect runs');
         // If just started new game, reset clickedChars.
@@ -43,7 +41,7 @@ function MemoryGame() {
 
     return (
         <main>
-            <ScoreBoard score={score} highScore={highScore} />
+            <ScoreBoard clickedChars={clickedChars} />
             <Status />
             {isGameActive ? (
                 <CardsBoard
