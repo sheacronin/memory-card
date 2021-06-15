@@ -1,12 +1,24 @@
 import React from 'react';
 
-const messages = {
-    instructions:
-        'Click on any character that you have not already selected. If you click on a character you have previously selected, you lose!',
-};
+function Status(props) {
+    const { gameOutcome } = props;
 
-function Status() {
-    return <div>{messages.instructions}</div>;
+    const getMessage = (outcome) => {
+        if (outcome) {
+            const [result, trigger] = outcome;
+            if (result === 'win') {
+                return `You clicked all ${trigger} characters! YOU WIN!`;
+            } else {
+                return `You already clicked ${trigger}, you lose!`;
+            }
+        } else {
+            return 'Click on any character that you have not already selected. If you click on a character you have previously selected, you lose!';
+        }
+    };
+
+    const message = getMessage(gameOutcome);
+
+    return <div>{message}</div>;
 }
 
 export default Status;

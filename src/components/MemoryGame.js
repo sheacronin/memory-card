@@ -5,16 +5,17 @@ import CardsBoard from './CardsBoard';
 import CHARACTERS from '../data/degrassiChars';
 
 function MemoryGame() {
-    console.log('--- MemoryGame Render ---');
-
-    const [isGameActive, setIsGameActive] = useState(false);
+    const [gameStatus, setGameStatus] = useState({ isActive: false });
 
     const [clickedChars, setClickedChars] = useState([]);
     function handleCardClick(character) {
         console.log('Clicked ' + character.name);
         if (clickedChars.includes(character)) {
             console.log('YOU LOSE! you already clicked ' + character.name);
-            setIsGameActive(false);
+            setGameStatus({
+                isActive: false,
+                outcome: ['lose', character.name],
+            });
         } else {
             setClickedChars((prevState) => [...prevState, character]);
         }
@@ -26,30 +27,33 @@ function MemoryGame() {
         if (clickedChars.length === CHARACTERS.length) {
             // shouldn't hard-code CHARACTERS length.. import it from separate file?
             console.log('You clicked all characters! YOU WIN!');
-            setIsGameActive(false);
+            setGameStatus({
+                isActive: false,
+                outcome: ['win', CHARACTERS.length],
+            });
         }
     }, [clickedChars]);
 
     useEffect(() => {
         console.log('Check for clickedChars reset effect runs');
-        // If just started new game, reset clickedChars.
-        if (!isGameActive && clickedChars.length > 0) {
+        // If just ended game, reset clickedChars.
+        if (!gameStatus.isActive && clickedChars.length > 0) {
             console.log('resetting clicked characters...');
             setClickedChars([]);
         }
-    }, [isGameActive, clickedChars]);
+    }, [gameStatus, clickedChars]);
 
     return (
         <main>
             <ScoreBoard clickedChars={clickedChars} />
-            <Status />
-            {isGameActive ? (
+            <Status gameOutcome={gameStatus.outcome} />
+            {gameStatus.isActive ? (
                 <CardsBoard
                     clickedChars={clickedChars}
                     handleCardClick={handleCardClick}
                 />
             ) : (
-                <button onClick={() => setIsGameActive(true)}>
+                <button onClick={() => setGameStatus({ isActive: true })}>
                     Start New Game
                 </button>
             )}
