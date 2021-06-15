@@ -1,0 +1,15 @@
+#new-game-btn {
+    background-color: #1a58a5;
+    color: #ffffff;
+    padding: 30px;
+    font-size: 18px;
+    font-family: 'Merriweather', serif;
+    border: none;
+    border-radius: 50px;
+    transition: 300ms ease-in-out box-shadow, 300ms ease-in-out color;
+}
+
+#new-game-btn:hover {
+    cursor: pointer;
+    box-shadow: 0 0 8px #00000050;
+}

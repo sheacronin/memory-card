@@ -3,6 +3,7 @@ import ScoreBoard from './ScoreBoard';
 import Status from './Status';
 import CardsBoard from './CardsBoard';
 import CHARACTERS from '../data/degrassiChars';
+import '../styles/MemoryGame.css';
 
 function MemoryGame() {
     const [gameStatus, setGameStatus] = useState({ isActive: false });
@@ -53,7 +54,10 @@ function MemoryGame() {
                     handleCardClick={handleCardClick}
                 />
             ) : (
-                <button onClick={() => setGameStatus({ isActive: true })}>
+                <button
+                    id="new-game-btn"
+                    onClick={() => setGameStatus({ isActive: true })}
+                >
                     Start New Game
                 </button>
             )}
