@@ -4,4 +4,11 @@
     font-weight: 700;
     width: 100vw;
     font-family: 'Merriweather', serif;
+    font-size: 18px;
+}
+
+@media (max-height: 750px) {
+    #score-board {
+        font-size: 14px;
+    }
 }

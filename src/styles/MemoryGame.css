@@ -36,3 +36,13 @@ h1 {
     cursor: pointer;
     box-shadow: 0 0 8px #00000050;
 }
+
+@media (max-height: 750px) {
+    h1 {
+        font-size: 20px;
+        line-height: 15px;
+    }
+    #degrassi-logo {
+        width: 200px;
+    }
+}

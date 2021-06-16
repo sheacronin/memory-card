@@ -5,3 +5,21 @@
     width: 95vw;
     height: 95%;
 }
+
+@media (min-width: 1200px) {
+    #cards-board {
+        width: 80vw;
+    }
+}
+
+@media (min-width: 800px) {
+    #cards-board {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+/* @media (max-width: 400px) {
+    #cards-board {
+        width: 100vw;
+    }
+} */
