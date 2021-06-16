@@ -1,5 +1,7 @@
 #score-board {
     display: flex;
     justify-content: space-around;
+    font-weight: 700;
     width: 100vw;
+    font-family: 'Merriweather', serif;
 }

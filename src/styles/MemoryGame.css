@@ -6,9 +6,10 @@ main {
 }
 
 h1 {
-    color: white;
+    color: #f9c16c;
     text-shadow: 0 0 8px #00000050;
     font-size: 30px;
+    line-height: 20px;
 }
 
 #degrassi-logo {
@@ -24,8 +25,9 @@ h1 {
     color: #ffffff;
     padding: 30px;
     font-size: 18px;
-    font-family: 'Merriweather', serif;
-    border: none;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 700;
+    border: 3px solid #f7a01c;
     border-radius: 50px;
     transition: 300ms ease-in-out box-shadow, 300ms ease-in-out color;
 }
