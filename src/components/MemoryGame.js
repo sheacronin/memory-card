@@ -4,6 +4,7 @@ import Status from './Status';
 import CardsBoard from './CardsBoard';
 import CHARACTERS from '../data/degrassiChars';
 import '../styles/MemoryGame.css';
+import degrassiLogo from '../i/degrassi-logo.png';
 
 function MemoryGame() {
     const [gameStatus, setGameStatus] = useState({ isActive: false });
@@ -46,7 +47,10 @@ function MemoryGame() {
 
     return (
         <main>
-            <h1>Degrassi Memory Card Game</h1>
+            <h1>
+                <img id="degrassi-logo" src={degrassiLogo} alt="Degrassi"></img>{' '}
+                Memory Card Game
+            </h1>
             <ScoreBoard clickedChars={clickedChars} />
             <Status gameOutcome={gameStatus.outcome} />
             {gameStatus.isActive ? (

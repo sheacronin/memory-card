@@ -5,10 +5,22 @@ main {
     height: 100vh;
 }
 
+h1 {
+    color: white;
+    text-shadow: 0 0 8px #00000050;
+    font-size: 30px;
+}
+
+#degrassi-logo {
+    width: 230px;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 0 8px #00000050);
+}
+
 #new-game-btn {
     background-color: #1a58a5;
-    margin-top: 20px;
-    align-self: start;
+    margin-bottom: 100px;
     color: #ffffff;
     padding: 30px;
     font-size: 18px;
