@@ -7,6 +7,8 @@ main {
 
 #new-game-btn {
     background-color: #1a58a5;
+    margin-top: 20px;
+    align-self: start;
     color: #ffffff;
     padding: 30px;
     font-size: 18px;

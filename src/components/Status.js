@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/Status.css';
 
 function Status(props) {
     const { gameOutcome } = props;
@@ -18,7 +19,7 @@ function Status(props) {
 
     const message = getMessage(gameOutcome);
 
-    return <div>{message}</div>;
+    return <div id="status">{message}</div>;
 }
 
 export default Status;

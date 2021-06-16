@@ -1,5 +1,5 @@
 #score-board {
     display: flex;
     justify-content: space-around;
-    place-self: stretch;
+    width: 100vw;
 }
