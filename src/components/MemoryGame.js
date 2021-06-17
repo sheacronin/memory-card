@@ -5,6 +5,7 @@ import CardsBoard from './CardsBoard';
 import CHARACTERS from '../data/degrassiChars';
 import '../styles/MemoryGame.css';
 import degrassiLogo from '../i/degrassi-logo.png';
+import animateElement from '../animations';
 
 function MemoryGame() {
     const [gameStatus, setGameStatus] = useState({ isActive: false });
@@ -61,7 +62,11 @@ function MemoryGame() {
             ) : (
                 <button
                     id="new-game-btn"
-                    onClick={() => setGameStatus({ isActive: true })}
+                    onClick={(e) =>
+                        animateElement(e.target, 'click-button').then(() =>
+                            setGameStatus({ isActive: true })
+                        )
+                    }
                 >
                     Start New Game
                 </button>

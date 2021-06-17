@@ -37,6 +37,27 @@ h1 {
     box-shadow: 0 0 8px #00000050;
 }
 
+.click-button {
+    animation: click-button 1s ease-out;
+}
+
+@keyframes click-button {
+    from {
+        box-shadow: inset #00000050 0 0 0;
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: inset #00000050 0 0 20px;
+        transform: scale(0.95);
+    }
+
+    to {
+        box-shadow: inset #00000050 0 0 0;
+        transform: scale(1);
+    }
+}
+
 @media (max-height: 750px) {
     h1 {
         font-size: 20px;
