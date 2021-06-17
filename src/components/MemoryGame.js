@@ -6,6 +6,7 @@ import CHARACTERS from '../data/degrassiChars';
 import '../styles/MemoryGame.css';
 import degrassiLogo from '../i/degrassi-logo.png';
 import animateElement from '../animations';
+import SeriesButton from './SeriesButton';
 
 function MemoryGame() {
     const [gameStatus, setGameStatus] = useState({ isActive: false });
@@ -46,6 +47,20 @@ function MemoryGame() {
         }
     }, [gameStatus, clickedChars]);
 
+    const [activeSeries, setActiveSeries] = useState(['DTNG']);
+    function handleSeriesBtnClick(series) {
+        if (activeSeries.includes(series)) {
+            setActiveSeries((prevState) => {
+                const newState = [...prevState];
+                const i = newState.indexOf(series);
+                newState.splice(i, 1);
+                return newState;
+            });
+        } else {
+            setActiveSeries((prevState) => [...prevState, series]);
+        }
+    }
+
     return (
         <main>
             <h1>
@@ -60,16 +75,36 @@ function MemoryGame() {
                     handleCardClick={handleCardClick}
                 />
             ) : (
-                <button
-                    id="new-game-btn"
-                    onClick={(e) =>
-                        animateElement(e.target, 'click-button').then(() =>
-                            setGameStatus({ isActive: true })
-                        )
-                    }
-                >
-                    Start New Game
-                </button>
+                <div>
+                    <button
+                        id="new-game-btn"
+                        onClick={(e) =>
+                            animateElement(e.target, 'click-button').then(
+                                () => {
+                                    setGameStatus({ isActive: true });
+                                    console.log(activeSeries);
+                                }
+                            )
+                        }
+                    >
+                        Start New Game
+                    </button>
+                    <div id="series-select">
+                        Select which characters to include:
+                        <div id="series-buttons">
+                            <SeriesButton
+                                handleClick={handleSeriesBtnClick}
+                                series="DJH"
+                                activeSeries={activeSeries}
+                            />
+                            <SeriesButton
+                                handleClick={handleSeriesBtnClick}
+                                series="DTNG"
+                                activeSeries={activeSeries}
+                            />
+                        </div>
+                    </div>
+                </div>
             )}
         </main>
     );
