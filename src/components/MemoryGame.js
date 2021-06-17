@@ -25,28 +25,6 @@ function MemoryGame() {
         }
     }
 
-    useEffect(() => {
-        console.log('Check for win effect runs');
-        // Check if win.
-        if (clickedChars.length === CHARACTERS.length) {
-            // shouldn't hard-code CHARACTERS length.. import it from separate file?
-            console.log('You clicked all characters! YOU WIN!');
-            setGameStatus({
-                isActive: false,
-                outcome: ['win', CHARACTERS.length],
-            });
-        }
-    }, [clickedChars]);
-
-    useEffect(() => {
-        console.log('Check for clickedChars reset effect runs');
-        // If just ended game, reset clickedChars.
-        if (!gameStatus.isActive && clickedChars.length > 0) {
-            console.log('resetting clicked characters...');
-            setClickedChars([]);
-        }
-    }, [gameStatus, clickedChars]);
-
     const [activeSeries, setActiveSeries] = useState(['DTNG']);
     function handleSeriesBtnClick(series) {
         if (activeSeries.includes(series)) {
@@ -61,6 +39,32 @@ function MemoryGame() {
         }
     }
 
+    // Store any characters that belong to an active series.
+    const allActiveChars = CHARACTERS.filter((char) =>
+        char.series.some((series) => activeSeries.includes(series))
+    );
+
+    useEffect(() => {
+        console.log('Check for win effect runs');
+        // Check if win.
+        if (clickedChars.length === allActiveChars.length) {
+            console.log('You clicked all characters! YOU WIN!');
+            setGameStatus({
+                isActive: false,
+                outcome: ['win', allActiveChars.length],
+            });
+        }
+    }, [clickedChars, allActiveChars]);
+
+    useEffect(() => {
+        console.log('Check for clickedChars reset effect runs');
+        // If just ended game, reset clickedChars.
+        if (!gameStatus.isActive && clickedChars.length > 0) {
+            console.log('resetting clicked characters...');
+            setClickedChars([]);
+        }
+    }, [gameStatus, clickedChars]);
+
     return (
         <main>
             <h1>
@@ -71,6 +75,7 @@ function MemoryGame() {
             <Status gameOutcome={gameStatus.outcome} />
             {gameStatus.isActive ? (
                 <CardsBoard
+                    allCharacters={allActiveChars}
                     clickedChars={clickedChars}
                     handleCardClick={handleCardClick}
                 />

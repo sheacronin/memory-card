@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Card from './Card';
 import '../styles/CardsBoard.css';
-import CHARACTERS from '../data/degrassiChars';
 import animateElement from '../animations';
 
 function CardsBoard(props) {
-    const { handleCardClick, clickedChars } = props;
+    const { handleCardClick, clickedChars, allCharacters } = props;
 
     const [displayedChars, setDisplayedChars] = useState(
-        CHARACTERS.slice(0, 6)
+        allCharacters.slice(0, 6)
     );
     // Shuffle displayed characters every time a character is clicked.
     useEffect(() => {
@@ -17,18 +16,20 @@ function CardsBoard(props) {
             console.log('Clicked Characters:', clickedChars);
 
             while (charsToDisplay.length < 6) {
-                const i = Math.floor(Math.random() * CHARACTERS.length);
-                if (charsToDisplay.includes(CHARACTERS[i])) {
+                const i = Math.floor(Math.random() * allCharacters.length);
+                if (charsToDisplay.includes(allCharacters[i])) {
                     continue;
                 } else {
                     if (charsToDisplay.length === 5) {
-                        console.log('Last character...' + CHARACTERS[i].name);
+                        console.log(
+                            'Last character...' + allCharacters[i].name
+                        );
                         // Ensure that at least one non-clicked char appears.
                         if (
                             charsToDisplay.every((char) =>
                                 clickedChars.includes(char)
                             ) &&
-                            clickedChars.includes(CHARACTERS[i])
+                            clickedChars.includes(allCharacters[i])
                         ) {
                             console.log('Getting unique char...');
                             continue;
@@ -38,12 +39,12 @@ function CardsBoard(props) {
                             charsToDisplay.splice(
                                 randomIndex,
                                 0,
-                                CHARACTERS[i]
+                                allCharacters[i]
                             );
                             break;
                         }
                     }
-                    charsToDisplay.push(CHARACTERS[i]);
+                    charsToDisplay.push(allCharacters[i]);
                 }
             }
 
@@ -52,16 +53,15 @@ function CardsBoard(props) {
         if (
             // Update displayedChars state if game is active.
             clickedChars.length > 0 &&
-            clickedChars.length < CHARACTERS.length
+            clickedChars.length < allCharacters.length
         ) {
             setDisplayedChars(getCharsToDisplay());
         }
-    }, [clickedChars]);
+    }, [clickedChars, allCharacters]);
 
     // Fade in board on each re-render.
     const boardRef = useRef(null);
     useEffect(() => {
-        console.log(boardRef.current);
         animateElement(boardRef.current, 'fade-in');
     });
 
