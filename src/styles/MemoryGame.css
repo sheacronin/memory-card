@@ -48,7 +48,7 @@ h1 {
 }
 
 .click-button {
-    animation: click-button 1s ease-out;
+    animation: click-button 500ms ease-out;
 }
 
 @keyframes click-button {
