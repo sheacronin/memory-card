@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Card from './Card';
 import '../styles/CardsBoard.css';
 import CHARACTERS from '../data/degrassiChars';
+import animateElement from '../animations';
 
 function CardsBoard(props) {
-    console.log('--- CardsBoard Render ---');
     const { handleCardClick, clickedChars } = props;
 
     const [displayedChars, setDisplayedChars] = useState(
@@ -58,8 +58,15 @@ function CardsBoard(props) {
         }
     }, [clickedChars]);
 
+    // Fade in board on each re-render.
+    const boardRef = useRef(null);
+    useEffect(() => {
+        console.log(boardRef.current);
+        animateElement(boardRef.current, 'fade-in');
+    });
+
     return (
-        <div id="cards-board">
+        <div ref={boardRef} id="cards-board">
             {displayedChars.map((character) => (
                 <Card
                     key={character.name}
