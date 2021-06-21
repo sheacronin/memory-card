@@ -47,7 +47,10 @@ function MemoryGame() {
     useEffect(() => {
         console.log('Check for win effect runs');
         // Check if win.
-        if (clickedChars.length === allActiveChars.length) {
+        if (
+            clickedChars.length === allActiveChars.length &&
+            clickedChars.length > 0
+        ) {
             console.log('You clicked all characters! YOU WIN!');
             setGameStatus({
                 isActive: false,
@@ -86,8 +89,9 @@ function MemoryGame() {
                         onClick={(e) =>
                             animateElement(e.target, 'click-button').then(
                                 () => {
-                                    setGameStatus({ isActive: true });
-                                    console.log(activeSeries);
+                                    if (activeSeries[0]) {
+                                        setGameStatus({ isActive: true });
+                                    }
                                 }
                             )
                         }
