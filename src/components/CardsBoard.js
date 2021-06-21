@@ -6,9 +6,7 @@ import animateElement from '../animations';
 function CardsBoard(props) {
     const { handleCardClick, clickedChars, allCharacters } = props;
 
-    const [displayedChars, setDisplayedChars] = useState(
-        allCharacters.slice(0, 6)
-    );
+    const [displayedChars, setDisplayedChars] = useState([]);
     // Shuffle displayed characters every time a character is clicked.
     useEffect(() => {
         function getCharsToDisplay() {
@@ -21,9 +19,6 @@ function CardsBoard(props) {
                     continue;
                 } else {
                     if (charsToDisplay.length === 5) {
-                        console.log(
-                            'Last character...' + allCharacters[i].name
-                        );
                         // Ensure that at least one non-clicked char appears.
                         if (
                             charsToDisplay.every((char) =>
@@ -35,7 +30,6 @@ function CardsBoard(props) {
                             continue;
                         } else {
                             const randomIndex = Math.floor(Math.random() * 6);
-                            console.log('Putting last char at ' + randomIndex);
                             charsToDisplay.splice(
                                 randomIndex,
                                 0,
@@ -50,11 +44,9 @@ function CardsBoard(props) {
 
             return charsToDisplay;
         }
-        if (
-            // Update displayedChars state if game is active.
-            clickedChars.length > 0 &&
-            clickedChars.length < allCharacters.length
-        ) {
+
+        // Update displayedChars state if game is active.
+        if (clickedChars.length < allCharacters.length) {
             setDisplayedChars(getCharsToDisplay());
         }
     }, [clickedChars, allCharacters]);

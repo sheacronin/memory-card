@@ -49,7 +49,6 @@ CHARACTERS.forEach((char) => {
         spaceIndex !== -1
             ? char.name.slice(0, spaceIndex).toLowerCase()
             : char.name.toLowerCase();
-    console.log(firstName);
     char.img = charImages[firstName];
 });
 

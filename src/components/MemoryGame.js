@@ -44,9 +44,8 @@ function MemoryGame() {
         char.series.some((series) => activeSeries.includes(series))
     );
 
+    // Check if win.
     useEffect(() => {
-        console.log('Check for win effect runs');
-        // Check if win.
         if (
             clickedChars.length === allActiveChars.length &&
             clickedChars.length > 0
@@ -59,9 +58,8 @@ function MemoryGame() {
         }
     }, [clickedChars, allActiveChars]);
 
+    // If just ended game, reset clickedChars.
     useEffect(() => {
-        console.log('Check for clickedChars reset effect runs');
-        // If just ended game, reset clickedChars.
         if (!gameStatus.isActive && clickedChars.length > 0) {
             console.log('resetting clicked characters...');
             setClickedChars([]);
