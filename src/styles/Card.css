@@ -1,7 +1,7 @@
 .card {
     max-height: 300px;
     padding: 5px;
-    font-size: 17px;
+    font-size: 15px;
     background-color: #ffffff;
     color: #050708;
     box-shadow: 0 0 5px #00000050;
@@ -51,9 +51,9 @@
     }
 }
 
-@media (max-height: 750px) {
+@media (max-height: 750px) and (max-width: 450px) {
     .card {
-        font-size: 14px;
+        font-size: 13px;
     }
     .card img {
         width: 80px;
