@@ -5,13 +5,30 @@ function SeriesButton(props) {
     const { series, activeSeries, handleClick } = props;
     const isActive = activeSeries.includes(series);
 
+    let fullSeriesName;
+
+    switch (series) {
+        case 'DJH':
+            fullSeriesName = 'Degrassi Junior High';
+            break;
+        case 'DTNG':
+            fullSeriesName = 'Degrassi: The Next Generation';
+            break;
+        default:
+            break;
+    }
+
     return (
-        <button
-            className={isActive ? 'series-button active' : 'series-button'}
-            onClick={() => handleClick(series)}
-        >
-            {series}
-        </button>
+        <div className="series-btn-container">
+            <button
+                className={isActive ? 'series-button active' : 'series-button'}
+                onClick={() => handleClick(series)}
+                id={series}
+            >
+                {series}
+            </button>
+            <label for={series}>{fullSeriesName}</label>
+        </div>
     );
 }
 

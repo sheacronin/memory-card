@@ -1,3 +1,15 @@
+.series-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.series-btn-container label {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
 .series-button {
     background-color: #5e7ca2;
     color: #ffffff;

@@ -1,12 +1,13 @@
 import React from 'react';
 import animateElement from '../animations';
 import SeriesButton from './SeriesButton';
+import '../styles/NewGameSection.css';
 
 function NewGameSection(props) {
     const { activeSeries, setGameStatus, handleSeriesBtnClick } = props;
 
     return (
-        <div>
+        <section>
             <button
                 id="new-game-btn"
                 onClick={(e) =>
@@ -21,7 +22,7 @@ function NewGameSection(props) {
             </button>
             <div id="series-select">
                 Select which characters to include:
-                <div id="series-buttons">
+                <div id="series-container">
                     <SeriesButton
                         handleClick={handleSeriesBtnClick}
                         series="DJH"
@@ -34,7 +35,7 @@ function NewGameSection(props) {
                     />
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

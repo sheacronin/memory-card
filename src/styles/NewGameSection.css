@@ -1,0 +1,48 @@
+#new-game-btn {
+    background-color: #1a58a5;
+    margin-bottom: 100px;
+    color: #ffffff;
+    padding: 30px;
+    font-size: 18px;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 700;
+    border: 3px solid #f7a01c;
+    border-radius: 50px;
+    transition: 300ms ease-in-out box-shadow, 300ms ease-in-out color;
+}
+
+#new-game-btn:hover {
+    cursor: pointer;
+    box-shadow: 0 0 8px #00000050;
+}
+
+#series-select {
+    font-size: 16px;
+}
+
+#series-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.click-button {
+    animation: click-button 500ms ease-out;
+}
+
+@keyframes click-button {
+    from {
+        box-shadow: inset #00000050 0 0 0;
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: inset #00000050 0 0 20px;
+        transform: scale(0.95);
+    }
+
+    to {
+        box-shadow: inset #00000050 0 0 0;
+        transform: scale(1);
+    }
+}
