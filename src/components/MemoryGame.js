@@ -5,8 +5,7 @@ import CardsBoard from './CardsBoard';
 import CHARACTERS from '../data/degrassiChars';
 import '../styles/MemoryGame.css';
 import degrassiLogo from '../i/degrassi-logo.png';
-import animateElement from '../animations';
-import SeriesButton from './SeriesButton';
+import NewGameSection from './NewGameSection';
 
 function MemoryGame() {
     const [gameStatus, setGameStatus] = useState({ isActive: false });
@@ -69,7 +68,7 @@ function MemoryGame() {
     return (
         <main>
             <h1>
-                <img id="degrassi-logo" src={degrassiLogo} alt="Degrassi"></img>{' '}
+                <img id="degrassi-logo" src={degrassiLogo} alt="Degrassi"></img>
                 Memory Card Game
             </h1>
             <ScoreBoard clickedChars={clickedChars} />
@@ -81,37 +80,11 @@ function MemoryGame() {
                     handleCardClick={handleCardClick}
                 />
             ) : (
-                <div>
-                    <button
-                        id="new-game-btn"
-                        onClick={(e) =>
-                            animateElement(e.target, 'click-button').then(
-                                () => {
-                                    if (activeSeries[0]) {
-                                        setGameStatus({ isActive: true });
-                                    }
-                                }
-                            )
-                        }
-                    >
-                        Start New Game
-                    </button>
-                    <div id="series-select">
-                        Select which characters to include:
-                        <div id="series-buttons">
-                            <SeriesButton
-                                handleClick={handleSeriesBtnClick}
-                                series="DJH"
-                                activeSeries={activeSeries}
-                            />
-                            <SeriesButton
-                                handleClick={handleSeriesBtnClick}
-                                series="DTNG"
-                                activeSeries={activeSeries}
-                            />
-                        </div>
-                    </div>
-                </div>
+                <NewGameSection
+                    activeSeries={activeSeries}
+                    handleSeriesBtnClick={handleSeriesBtnClick}
+                    setGameStatus={setGameStatus}
+                />
             )}
         </main>
     );
