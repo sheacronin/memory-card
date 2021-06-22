@@ -71,6 +71,10 @@ function MemoryGame() {
                 <img id="degrassi-logo" src={degrassiLogo} alt="Degrassi"></img>
                 Memory Card Game
             </h1>
+            {gameStatus.isActive &&
+            <button id="restart-btn" onClick={() => setGameStatus({isActive: false})}>
+                Restart
+            </button>}
             <ScoreBoard clickedChars={clickedChars} />
             <Status gameOutcome={gameStatus.outcome} numOfChars={allActiveChars.length}/>
             {gameStatus.isActive ? (

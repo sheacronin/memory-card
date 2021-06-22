@@ -27,7 +27,7 @@ function SeriesButton(props) {
             >
                 {series}
             </button>
-            <label for={series}>{fullSeriesName}</label>
+            <label htmlFor={series}>{fullSeriesName}</label>
         </div>
     );
 }

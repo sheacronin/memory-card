@@ -19,6 +19,26 @@ h1 {
     filter: drop-shadow(0 0 8px #00000050);
 }
 
+#restart-btn {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    background-color: #f9c16c;
+    color: #050708;
+    padding: 6px;
+    font-size: 12px;
+    font-family: 'Merriweather Sans', sans-serif;
+    border: none;
+    border-radius: 10px;
+    transition: 300ms ease-in-out box-shadow, 300ms ease-in-out background-color;
+}
+
+#restart-btn:hover {
+    cursor: pointer;
+    box-shadow: 0 0 8px #00000050;
+    background-color: #ff8383;
+}
+
 @media (max-height: 750px) and (max-width: 450px) {
     h1 {
         font-size: 20px;

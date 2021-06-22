@@ -8,7 +8,7 @@
     font-weight: 700;
     border: 3px solid #f7a01c;
     border-radius: 50px;
-    transition: 300ms ease-in-out box-shadow, 300ms ease-in-out color;
+    transition: 300ms ease-in-out box-shadow;
 }
 
 #new-game-btn:hover {
