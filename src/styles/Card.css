@@ -51,7 +51,7 @@
     }
 }
 
-@media (max-height: 750px) and (max-width: 450px) {
+@media (max-height: 700px) and (max-width: 450px) {
     .card {
         font-size: 13px;
     }
