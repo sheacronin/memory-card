@@ -11,7 +11,6 @@ function CardsBoard(props) {
     useEffect(() => {
         function getCharsToDisplay() {
             const charsToDisplay = [];
-            console.log('Clicked Characters:', clickedChars);
 
             while (charsToDisplay.length < 6) {
                 const i = Math.floor(Math.random() * allCharacters.length);
@@ -26,9 +25,8 @@ function CardsBoard(props) {
                             ) &&
                             clickedChars.includes(allCharacters[i])
                         ) {
-                            console.log('Getting unique char...');
                             continue;
-                        } else {
+                        } else { // Insert last char in random position.
                             const randomIndex = Math.floor(Math.random() * 6);
                             charsToDisplay.splice(
                                 randomIndex,

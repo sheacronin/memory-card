@@ -12,9 +12,7 @@ function MemoryGame() {
 
     const [clickedChars, setClickedChars] = useState([]);
     function handleCardClick(character) {
-        console.log('Clicked ' + character.name);
         if (clickedChars.includes(character)) {
-            console.log('YOU LOSE! you already clicked ' + character.name);
             setGameStatus({
                 isActive: false,
                 outcome: ['lose', character.name],
@@ -49,7 +47,6 @@ function MemoryGame() {
             clickedChars.length === allActiveChars.length &&
             clickedChars.length > 0
         ) {
-            console.log('You clicked all characters! YOU WIN!');
             setGameStatus({
                 isActive: false,
                 outcome: ['win', allActiveChars.length],
@@ -60,7 +57,6 @@ function MemoryGame() {
     // If just ended game, reset clickedChars.
     useEffect(() => {
         if (!gameStatus.isActive && clickedChars.length > 0) {
-            console.log('resetting clicked characters...');
             setClickedChars([]);
         }
     }, [gameStatus, clickedChars]);

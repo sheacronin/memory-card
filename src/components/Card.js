@@ -10,8 +10,7 @@ function Card(props) {
             className="card"
             onClick={(e) => {
                 animateElement(e.currentTarget, 'click-card')
-                    .then((message) => {
-                        console.log(message);
+                    .then(() => {
                         handleCardClick(character);
                     })
                     .catch((error) => {
