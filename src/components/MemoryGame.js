@@ -72,7 +72,7 @@ function MemoryGame() {
                 Memory Card Game
             </h1>
             <ScoreBoard clickedChars={clickedChars} />
-            <Status gameOutcome={gameStatus.outcome} />
+            <Status gameOutcome={gameStatus.outcome} numOfChars={allActiveChars.length}/>
             {gameStatus.isActive ? (
                 <CardsBoard
                     allCharacters={allActiveChars}

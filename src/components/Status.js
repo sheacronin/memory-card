@@ -2,18 +2,22 @@ import React from 'react';
 import '../styles/Status.css';
 
 function Status(props) {
-    const { gameOutcome } = props;
+    const { gameOutcome, numOfChars } = props;
 
     const getMessage = (outcome) => {
+        if (numOfChars === 0) {
+            return <p>Please select <strong className="red">at least one series</strong> to play the game.</p>
+        }
+
         if (outcome) {
             const [result, trigger] = outcome;
             if (result === 'win') {
-                return `You clicked all ${trigger} characters! YOU WIN!`;
+                return <p>You clicked all <strong className="green">{trigger} characters</strong>! YOU WIN!</p>;
             } else {
-                return `You already clicked ${trigger}, you lose!`;
+                return <p>You already clicked <strong className="red">{trigger}</strong>, you lose!</p>;
             }
         } else {
-            return 'Click on any character that you have not already selected. If you click on a character you have previously selected, you lose!';
+            return <p>Click on any character that you have not already selected. Click all {numOfChars} unique characters to win.</p>;
         }
     };
 
